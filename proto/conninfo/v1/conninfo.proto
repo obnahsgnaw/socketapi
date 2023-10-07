@@ -17,4 +17,7 @@ message ConnInfoResponse{
   string remote_network = 3;
   string remote_addr = 4;
   string connect_at = 5;
+  uint32 uid = 6;
+  string uname = 7;
+  string socket_type = 8;
 }
