@@ -1,0 +1,20 @@
+syntax = "proto3";
+package bind.v1;
+
+// BindService
+service ConnService{
+  // bind id and type on socket conn
+  rpc Info(ConnInfoRequest) returns (ConnInfoResponse);
+}
+// request
+message ConnInfoRequest{
+  int64 fd = 1;
+}
+// response
+message ConnInfoResponse{
+  string local_network = 1;
+  string local_addr = 2;
+  string remote_network = 3;
+  string remote_addr = 4;
+  string connect_at = 5;
+}

@@ -30,6 +30,8 @@ message BindExistResponse{
 // request
 message UnBindIdRequest{
   int64 fd = 1;
+  string id = 2;
+  string id_type = 3;
 }
 // response
 message UnBindIdResponse{}
