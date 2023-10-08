@@ -1,5 +1,5 @@
 syntax = "proto3";
-package bind.v1;
+package conn.v1;
 
 // BindService
 service ConnService{

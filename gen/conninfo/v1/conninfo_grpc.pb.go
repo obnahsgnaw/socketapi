@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: conninfo/v1/conninfo.proto
 
-package bindv1
+package connv1
 
 import (
 	context "context"
@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ConnService_Info_FullMethodName = "/bind.v1.ConnService/Info"
+	ConnService_Info_FullMethodName = "/conn.v1.ConnService/Info"
 )
 
 // ConnServiceClient is the client API for ConnService service.
@@ -98,7 +98,7 @@ func _ConnService_Info_Handler(srv interface{}, ctx context.Context, dec func(in
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ConnService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "bind.v1.ConnService",
+	ServiceName: "conn.v1.ConnService",
 	HandlerType: (*ConnServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
