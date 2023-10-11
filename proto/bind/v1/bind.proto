@@ -17,14 +17,14 @@ message Id {
 // request
 message BindIdRequest{
   int64 fd = 1;
-  repeated Id id = 2;
+  repeated Id ids = 2;
 }
 // response
 message BindIdResponse{}
 
 // request
 message BindExistRequest{
-  string typ = 1;
+  string id = 1;
 }
 // response
 message BindExistResponse{
@@ -34,7 +34,7 @@ message BindExistResponse{
 // request
 message UnBindIdRequest{
   int64 fd = 1;
-  repeated string typ = 2;
+  repeated string types = 2;
 }
 
 // response
