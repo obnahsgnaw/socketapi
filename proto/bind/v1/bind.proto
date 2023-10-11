@@ -8,19 +8,23 @@ service BindService{
   rpc BindExist(BindExistRequest) returns (BindExistResponse);
   rpc UnBindId(UnBindIdRequest) returns (UnBindIdResponse);
 }
+
+message Id {
+  string typ = 1;
+  string id = 2;
+}
+
 // request
 message BindIdRequest{
   int64 fd = 1;
-  string id = 2;
-  string id_type = 3;
+  repeated Id id = 2;
 }
 // response
 message BindIdResponse{}
 
 // request
 message BindExistRequest{
-  string id = 1;
-  string id_type = 2;
+  string typ = 1;
 }
 // response
 message BindExistResponse{
@@ -30,8 +34,8 @@ message BindExistResponse{
 // request
 message UnBindIdRequest{
   int64 fd = 1;
-  string id = 2;
-  string id_type = 3;
+  repeated string typ = 2;
 }
+
 // response
 message UnBindIdResponse{}
