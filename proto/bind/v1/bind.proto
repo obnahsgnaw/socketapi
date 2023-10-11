@@ -24,7 +24,7 @@ message BindIdResponse{}
 
 // request
 message BindExistRequest{
-  string id = 1;
+  Id id = 1;
 }
 // response
 message BindExistResponse{
