@@ -1,4 +1,12 @@
 
+<a name="v0.5.0"></a>
+## [v0.5.0](https://8.140.161.172/wangsb/wgateway/compare/v0.4.2...v0.5.0) (2023-11-16)
+
+### Features
+
+* **proto:** added slb proto rpc
+
+
 <a name="v0.4.2"></a>
 ## [v0.4.2](https://8.140.161.172/wangsb/wgateway/compare/v0.4.1...v0.4.2) (2023-10-11)
 
