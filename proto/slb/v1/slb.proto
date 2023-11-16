@@ -1,0 +1,18 @@
+syntax = "proto3";
+package slb.v1;
+
+// SlbService
+service SlbService{
+  // set action slb number, default is fd
+  rpc SetActionSlb(ActionSlbRequest) returns (ActionSLbResponse);
+}
+// request
+message ActionSlbRequest{
+  int64 fd = 1;
+  int64 action = 2;
+  int64 sbl = 3;
+}
+// response
+message ActionSLbResponse{
+  string error = 1;
+}

@@ -26,7 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ConnServiceClient interface {
-	// bind id and type on socket conn
+	// return the connection info
 	Info(ctx context.Context, in *ConnInfoRequest, opts ...grpc.CallOption) (*ConnInfoResponse, error)
 }
 
@@ -51,7 +51,7 @@ func (c *connServiceClient) Info(ctx context.Context, in *ConnInfoRequest, opts 
 // All implementations must embed UnimplementedConnServiceServer
 // for forward compatibility
 type ConnServiceServer interface {
-	// bind id and type on socket conn
+	// return the connection info
 	Info(context.Context, *ConnInfoRequest) (*ConnInfoResponse, error)
 	mustEmbedUnimplementedConnServiceServer()
 }

@@ -1,9 +1,9 @@
 syntax = "proto3";
 package conn.v1;
 
-// BindService
+// ConnService
 service ConnService{
-  // bind id and type on socket conn
+  // return the connection info
   rpc Info(ConnInfoRequest) returns (ConnInfoResponse);
 }
 // request
