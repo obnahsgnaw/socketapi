@@ -21,8 +21,7 @@ message HandleRequest {
   message User{
     int64 id = 1;
     string name = 2;
-    int64 cid = 3;
-    int64 oid = 4;
+    map<string,string> attrs = 3;
   }
   User user = 7;
   SocketType typ = 8;
