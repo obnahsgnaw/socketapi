@@ -1,4 +1,12 @@
 
+<a name="v0.5.4"></a>
+## [v0.5.4](https://8.140.161.172/wangsb/wgateway/compare/v0.5.3...v0.5.4) (2024-02-07)
+
+### Bug Fixes
+
+* **handler.proto:** fix User attr
+
+
 <a name="v0.5.3"></a>
 ## [v0.5.3](https://8.140.161.172/wangsb/wgateway/compare/v0.5.2...v0.5.3) (2024-02-06)
 
