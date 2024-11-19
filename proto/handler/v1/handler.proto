@@ -25,6 +25,11 @@ message HandleRequest {
   }
   User user = 7;
   SocketType typ = 8;
+  message Target{
+    string type = 1;
+    string id = 2;
+  }
+  Target target = 9;
 }
 
 message HandleResponse {

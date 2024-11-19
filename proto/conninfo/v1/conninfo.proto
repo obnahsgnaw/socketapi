@@ -20,4 +20,6 @@ message ConnInfoResponse{
   uint32 uid = 6;
   string uname = 7;
   string socket_type = 8;
+  string target_type = 9;
+  string target_id = 10;
 }
