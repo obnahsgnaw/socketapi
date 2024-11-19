@@ -1,4 +1,12 @@
 
+<a name="v0.5.5"></a>
+## [v0.5.5](https://8.140.161.172/wangsb/wgateway/compare/v0.5.4...v0.5.5) (2024-11-19)
+
+### Features
+
+* **conninfo handler:** added Target for handler and connect info
+
+
 <a name="v0.5.4"></a>
 ## [v0.5.4](https://8.140.161.172/wangsb/wgateway/compare/v0.5.3...v0.5.4) (2024-02-07)
 
