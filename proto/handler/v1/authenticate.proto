@@ -1,5 +1,10 @@
 syntax = "proto3";
 package handler.v1;
+// tcp socket server rpc service
+service AuthenticateService{
+  // handle authenticate
+  rpc Handle(AuthenticateRequest) returns (AuthenticateResponse);
+}
 
 message AuthenticateRequest {
   string gateway = 1; // 网关地址
