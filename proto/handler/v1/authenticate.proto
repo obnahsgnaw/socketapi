@@ -7,7 +7,6 @@ message AuthenticateRequest {
   string type = 3; // 认证类型
   string id = 4;   // 认证id
   string secret = 5; // 认证密钥 RSA.Encrypt(AES.Key+timestamp-10)
-  bool secret_enabled = 6; // 是否开启了auth认证，开启了则需要返回下面的User
 }
 
 message AuthenticateResponse {
