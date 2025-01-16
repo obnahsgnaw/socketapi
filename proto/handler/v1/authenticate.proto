@@ -10,12 +10,14 @@ message AuthenticateRequest {
 }
 
 message AuthenticateResponse {
-  bytes key = 1; // AES.key
-  map<string, string> ext = 2; // 扩展信息
+  string type = 1; // 认证类型
+  string id = 2;   // 认证id
+  string master = 3; // 主id 不是代理即和id一致
+  bytes key = 4; // AES.key
   message User{
     int64 id = 1;
     string name = 2;
     map<string, string> attrs = 3;
   }
-  User user = 3; // 用户信息
+  User user = 5; // 用户信息 未启用用户信息时 为nil 网关自动填充
 }

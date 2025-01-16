@@ -28,7 +28,7 @@ message HandleRequest {
   message Target{
     string type = 1;
     string id = 2;
-    map<string,string> ext = 3;
+    string master = 3;
   }
   Target target = 9;
 }
