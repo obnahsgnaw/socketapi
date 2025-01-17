@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	BindService_BindId_FullMethodName    = "/bind.v1.BindService/BindId"
-	BindService_BindExist_FullMethodName = "/bind.v1.BindService/BindExist"
-	BindService_UnBindId_FullMethodName  = "/bind.v1.BindService/UnBindId"
+	BindService_BindId_FullMethodName           = "/bind.v1.BindService/BindId"
+	BindService_BindExist_FullMethodName        = "/bind.v1.BindService/BindExist"
+	BindService_UnBindId_FullMethodName         = "/bind.v1.BindService/UnBindId"
+	BindService_DisconnectTarget_FullMethodName = "/bind.v1.BindService/DisconnectTarget"
 )
 
 // BindServiceClient is the client API for BindService service.
@@ -32,6 +33,7 @@ type BindServiceClient interface {
 	BindId(ctx context.Context, in *BindIdRequest, opts ...grpc.CallOption) (*BindIdResponse, error)
 	BindExist(ctx context.Context, in *BindExistRequest, opts ...grpc.CallOption) (*BindExistResponse, error)
 	UnBindId(ctx context.Context, in *UnBindIdRequest, opts ...grpc.CallOption) (*UnBindIdResponse, error)
+	DisconnectTarget(ctx context.Context, in *DisconnectTargetRequest, opts ...grpc.CallOption) (*DisconnectTargetResponse, error)
 }
 
 type bindServiceClient struct {
@@ -69,6 +71,15 @@ func (c *bindServiceClient) UnBindId(ctx context.Context, in *UnBindIdRequest, o
 	return out, nil
 }
 
+func (c *bindServiceClient) DisconnectTarget(ctx context.Context, in *DisconnectTargetRequest, opts ...grpc.CallOption) (*DisconnectTargetResponse, error) {
+	out := new(DisconnectTargetResponse)
+	err := c.cc.Invoke(ctx, BindService_DisconnectTarget_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BindServiceServer is the server API for BindService service.
 // All implementations must embed UnimplementedBindServiceServer
 // for forward compatibility
@@ -77,6 +88,7 @@ type BindServiceServer interface {
 	BindId(context.Context, *BindIdRequest) (*BindIdResponse, error)
 	BindExist(context.Context, *BindExistRequest) (*BindExistResponse, error)
 	UnBindId(context.Context, *UnBindIdRequest) (*UnBindIdResponse, error)
+	DisconnectTarget(context.Context, *DisconnectTargetRequest) (*DisconnectTargetResponse, error)
 	mustEmbedUnimplementedBindServiceServer()
 }
 
@@ -92,6 +104,9 @@ func (UnimplementedBindServiceServer) BindExist(context.Context, *BindExistReque
 }
 func (UnimplementedBindServiceServer) UnBindId(context.Context, *UnBindIdRequest) (*UnBindIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnBindId not implemented")
+}
+func (UnimplementedBindServiceServer) DisconnectTarget(context.Context, *DisconnectTargetRequest) (*DisconnectTargetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisconnectTarget not implemented")
 }
 func (UnimplementedBindServiceServer) mustEmbedUnimplementedBindServiceServer() {}
 
@@ -160,6 +175,24 @@ func _BindService_UnBindId_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BindService_DisconnectTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisconnectTargetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BindServiceServer).DisconnectTarget(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BindService_DisconnectTarget_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BindServiceServer).DisconnectTarget(ctx, req.(*DisconnectTargetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BindService_ServiceDesc is the grpc.ServiceDesc for BindService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -178,6 +211,10 @@ var BindService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UnBindId",
 			Handler:    _BindService_UnBindId_Handler,
+		},
+		{
+			MethodName: "DisconnectTarget",
+			Handler:    _BindService_DisconnectTarget_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
