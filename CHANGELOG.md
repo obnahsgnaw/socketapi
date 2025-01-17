@@ -1,4 +1,16 @@
 
+<a name="v0.6.1"></a>
+## [v0.6.1](https://8.140.161.172/wangsb/wgateway/compare/v0.5.11...v0.6.1) (2025-01-17)
+
+### Features
+
+* **bind:** added DisconnectTarget method
+
+
+<a name="v0.5.11"></a>
+## [v0.5.11](https://8.140.161.172/wangsb/wgateway/compare/v0.5.10...v0.5.11) (2025-01-16)
+
+
 <a name="v0.5.10"></a>
 ## [v0.5.10](https://8.140.161.172/wangsb/wgateway/compare/v0.5.9...v0.5.10) (2025-01-16)
 
