@@ -15,5 +15,6 @@ message AuthenticateResponse {
   string id = 3;   // 认证id
   string master = 4; // 主id 不是代理即和id一致
   bytes key = 5; // AES.key
-  string user_id = 6; // 用户id
+  uint32 company_id = 6; // 组织id
+  uint32 user_id = 7; // 用户id
 }
