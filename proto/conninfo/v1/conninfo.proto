@@ -25,4 +25,5 @@ message ConnInfoResponse{
   string target_master_id = 11;
   uint32 target_cid = 12;
   uint32 target_uid = 13;
+  uint32 target_protocol = 14;
 }

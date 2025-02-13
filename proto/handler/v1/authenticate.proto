@@ -17,4 +17,5 @@ message AuthenticateResponse {
   bytes key = 5; // AES.key
   uint32 company_id = 6; // 组织id
   uint32 user_id = 7; // 用户id
+  string protocol = 8; // 空=系统协议，否则为原始自定义协议
 }
