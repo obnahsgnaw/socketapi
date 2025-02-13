@@ -2,7 +2,8 @@ syntax = "proto3";
 package handler.v1;
 
 message RawRequest {
-  bytes data = 1;
+  uint32 action_id = 1; // 无则是in， 有则是out 需要转换
+  bytes data = 2;
 }
 
 message RawResponse {
