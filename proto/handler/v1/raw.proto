@@ -1,0 +1,10 @@
+syntax = "proto3";
+package handler.v1;
+
+message RawRequest {
+  bytes data = 1;
+}
+
+message RawResponse {
+  bytes data = 1;
+}
