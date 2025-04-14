@@ -23,3 +23,12 @@ message SendMessageRequest{
 }
 
 message SendMessageResponse{}
+
+message MqttPackage {
+  bool   duplicate = 1;
+  int32 qos = 2;
+  bool   retained = 3;;
+  string topic = 4;
+  uint32 message_id = 5;
+  bytes payload = 6;
+}
