@@ -14,8 +14,9 @@ message AuthenticateResponse {
   string type = 2; // 认证类型
   string id = 3;   // 认证id
   string master = 4; // 主id 不是代理即和id一致
-  bytes key = 5; // AES.key
+  bytes key = 5; // AES.key 为空表示不加解密
   uint32 company_id = 6; // 组织id
   uint32 user_id = 7; // 用户id
   string protocol = 8; // 空=系统协议，否则为原始自定义协议
+  map<string,string> config = 9; // 一些自定义配置项
 }
