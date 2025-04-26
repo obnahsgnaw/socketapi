@@ -27,8 +27,8 @@ message ConnInfoResponse{
   uint32 target_cid = 12;
   uint32 target_uid = 13;
   uint32 target_protocol = 14;
-  uint32 target_sid = 15;
-  uint32 target_master_sid = 16;
+  string target_sid = 15;
+  string target_master_sid = 16;
 }
 
 message ConnSidRequest{
