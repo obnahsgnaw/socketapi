@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ConnService_Info_FullMethodName = "/conn.v1.ConnService/Info"
+	ConnService_Info_FullMethodName      = "/conn.v1.ConnService/Info"
+	ConnService_SessionId_FullMethodName = "/conn.v1.ConnService/SessionId"
 )
 
 // ConnServiceClient is the client API for ConnService service.
@@ -28,6 +29,7 @@ const (
 type ConnServiceClient interface {
 	// return the connection info
 	Info(ctx context.Context, in *ConnInfoRequest, opts ...grpc.CallOption) (*ConnInfoResponse, error)
+	SessionId(ctx context.Context, in *ConnSidRequest, opts ...grpc.CallOption) (*ConnSidResponse, error)
 }
 
 type connServiceClient struct {
@@ -47,12 +49,22 @@ func (c *connServiceClient) Info(ctx context.Context, in *ConnInfoRequest, opts 
 	return out, nil
 }
 
+func (c *connServiceClient) SessionId(ctx context.Context, in *ConnSidRequest, opts ...grpc.CallOption) (*ConnSidResponse, error) {
+	out := new(ConnSidResponse)
+	err := c.cc.Invoke(ctx, ConnService_SessionId_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ConnServiceServer is the server API for ConnService service.
 // All implementations must embed UnimplementedConnServiceServer
 // for forward compatibility
 type ConnServiceServer interface {
 	// return the connection info
 	Info(context.Context, *ConnInfoRequest) (*ConnInfoResponse, error)
+	SessionId(context.Context, *ConnSidRequest) (*ConnSidResponse, error)
 	mustEmbedUnimplementedConnServiceServer()
 }
 
@@ -62,6 +74,9 @@ type UnimplementedConnServiceServer struct {
 
 func (UnimplementedConnServiceServer) Info(context.Context, *ConnInfoRequest) (*ConnInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
+}
+func (UnimplementedConnServiceServer) SessionId(context.Context, *ConnSidRequest) (*ConnSidResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SessionId not implemented")
 }
 func (UnimplementedConnServiceServer) mustEmbedUnimplementedConnServiceServer() {}
 
@@ -94,6 +109,24 @@ func _ConnService_Info_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ConnService_SessionId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConnSidRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConnServiceServer).SessionId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConnService_SessionId_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConnServiceServer).SessionId(ctx, req.(*ConnSidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ConnService_ServiceDesc is the grpc.ServiceDesc for ConnService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -104,6 +137,10 @@ var ConnService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Info",
 			Handler:    _ConnService_Info_Handler,
+		},
+		{
+			MethodName: "SessionId",
+			Handler:    _ConnService_SessionId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
