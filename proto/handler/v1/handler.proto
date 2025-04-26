@@ -27,6 +27,8 @@ message HandleRequest {
     uint32 cid = 4;
     uint32 uid = 5;
     string protocol = 6;
+    string session_id = 7;
+    string master_session_id = 8;
   }
   Target target = 9;
 }
