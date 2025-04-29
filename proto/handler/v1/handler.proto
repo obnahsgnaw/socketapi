@@ -23,12 +23,10 @@ message HandleRequest {
   message Target{
     string type = 1;
     string id = 2;
-    string master = 3;
-    uint32 cid = 4;
-    uint32 uid = 5;
-    string protocol = 6;
-    string session_id = 7;
-    string master_session_id = 8;
+    uint32 cid = 3;
+    uint32 uid = 4;
+    string protocol = 5;
+    string session_id = 6;
   }
   Target target = 9;
 }
