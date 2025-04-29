@@ -53,7 +53,8 @@ message DisconnectTargetResponse{}
 
 // request
 message ProxyTargetRequest{
-  repeated string target = 1;
+  int64 fd = 1;
+  repeated string target = 2;
 }
 
 // response
