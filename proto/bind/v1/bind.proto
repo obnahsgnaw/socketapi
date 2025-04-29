@@ -8,6 +8,8 @@ service BindService{
   rpc BindExist(BindExistRequest) returns (BindExistResponse);
   rpc UnBindId(UnBindIdRequest) returns (UnBindIdResponse);
   rpc DisconnectTarget(DisconnectTargetRequest) returns (DisconnectTargetResponse);
+  rpc BindProxyTarget(ProxyTargetRequest) returns (ProxyTargetResponse);
+  rpc UnbindProxyTarget(ProxyTargetRequest) returns (ProxyTargetResponse);
 }
 
 message Id {
@@ -48,3 +50,11 @@ message DisconnectTargetRequest{
 
 // response
 message DisconnectTargetResponse{}
+
+// request
+message ProxyTargetRequest{
+  repeated string target = 1;
+}
+
+// response
+message ProxyTargetResponse{}

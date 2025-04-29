@@ -29,6 +29,7 @@ const (
 type ConnServiceClient interface {
 	// return the connection info
 	Info(ctx context.Context, in *ConnInfoRequest, opts ...grpc.CallOption) (*ConnInfoResponse, error)
+	// query the target session id
 	SessionId(ctx context.Context, in *ConnSidRequest, opts ...grpc.CallOption) (*ConnSidResponse, error)
 }
 
@@ -64,6 +65,7 @@ func (c *connServiceClient) SessionId(ctx context.Context, in *ConnSidRequest, o
 type ConnServiceServer interface {
 	// return the connection info
 	Info(context.Context, *ConnInfoRequest) (*ConnInfoResponse, error)
+	// query the target session id
 	SessionId(context.Context, *ConnSidRequest) (*ConnSidResponse, error)
 	mustEmbedUnimplementedConnServiceServer()
 }
