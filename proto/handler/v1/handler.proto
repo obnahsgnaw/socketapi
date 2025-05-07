@@ -23,12 +23,11 @@ message HandleRequest {
   message Target{
     string type = 1;
     string id = 2;
-    int32 iid = 3;   // 认证iid
-    string sn = 4;   // 认证sn
+    int32 iid = 3;
+    string sn = 4;
     uint32 cid = 5;
     uint32 uid = 6;
     string protocol = 7;
-    string session_id = 8;
   }
   Target target = 9;
 }

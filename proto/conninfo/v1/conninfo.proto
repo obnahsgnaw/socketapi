@@ -5,8 +5,6 @@ package conn.v1;
 service ConnService{
   // return the connection info
   rpc Info(ConnInfoRequest) returns (ConnInfoResponse);
-  // query the target session id
-  rpc SessionId(ConnSidRequest) returns (ConnSidResponse);
 }
 // request
 message ConnInfoRequest{
@@ -27,14 +25,4 @@ message ConnInfoResponse{
   uint32 target_cid = 11;
   uint32 target_uid = 12;
   uint32 target_protocol = 13;
-  string target_sid = 14;
-}
-
-message ConnSidRequest{
-  string target = 1;
-  bool active = 2;
-}
-
-message ConnSidResponse{
-  string session_id = 1;
 }
