@@ -13,7 +13,7 @@ message AuthenticateResponse {
   string error =1; // 错误信息
   string type = 2; // 认证类型
   string id = 3;    // 认证id
-  int32 iid = 4;   // 认证no
+  int32 iid = 4;   // 认证iid
   string sn = 5;   // 认证sn
   bytes key = 6;   // AES.key 为空表示不加解密
   uint32 company_id = 7; // 组织id

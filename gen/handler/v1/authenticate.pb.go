@@ -107,7 +107,7 @@ type AuthenticateResponse struct {
 	Error     string            `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`                                                                                            // 错误信息
 	Type      string            `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`                                                                                              // 认证类型
 	Id        string            `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`                                                                                                  // 认证id
-	Iid       int32             `protobuf:"varint,4,opt,name=iid,proto3" json:"iid,omitempty"`                                                                                               // 认证no
+	Iid       int32             `protobuf:"varint,4,opt,name=iid,proto3" json:"iid,omitempty"`                                                                                               // 认证iid
 	Sn        string            `protobuf:"bytes,5,opt,name=sn,proto3" json:"sn,omitempty"`                                                                                                  // 认证sn
 	Key       []byte            `protobuf:"bytes,6,opt,name=key,proto3" json:"key,omitempty"`                                                                                                // AES.key 为空表示不加解密
 	CompanyId uint32            `protobuf:"varint,7,opt,name=company_id,json=companyId,proto3" json:"company_id,omitempty"`                                                                  // 组织id
