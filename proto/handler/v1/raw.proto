@@ -8,4 +8,11 @@ message RawRequest {
 
 message RawResponse {
   bytes data = 1;
+  repeated SubAction sub_response = 2;
+}
+
+message SubAction{
+  uint32 action_id = 1;
+  bytes data = 2;
+  string target = 3; // 给其他连接， 可以为空
 }
