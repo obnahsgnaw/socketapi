@@ -8,7 +8,7 @@ message RawRequest {
 
 message RawResponse {
   bytes data = 1;
-  repeated SubAction sub_response = 2;
+  repeated SubAction sub_actions = 2;
 }
 
 message SubAction{
