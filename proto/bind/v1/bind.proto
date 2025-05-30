@@ -10,6 +10,7 @@ service BindService{
   rpc DisconnectTarget(DisconnectTargetRequest) returns (DisconnectTargetResponse);
   rpc BindProxyTarget(ProxyTargetRequest) returns (ProxyTargetResponse);
   rpc UnbindProxyTarget(ProxyTargetRequest) returns (ProxyTargetResponse);
+  rpc TargetBindId(TargetBindIdRequest) returns (TargetBindIdResponse);
 }
 
 message Id {
@@ -59,3 +60,12 @@ message ProxyTargetRequest{
 
 // response
 message ProxyTargetResponse{}
+
+message TargetBindIdRequest{
+  string target = 1;
+  string bind_type = 2;
+}
+
+message TargetBindIdResponse{
+  Id id = 1;
+}

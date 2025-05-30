@@ -25,6 +25,7 @@ const (
 	BindService_DisconnectTarget_FullMethodName  = "/bind.v1.BindService/DisconnectTarget"
 	BindService_BindProxyTarget_FullMethodName   = "/bind.v1.BindService/BindProxyTarget"
 	BindService_UnbindProxyTarget_FullMethodName = "/bind.v1.BindService/UnbindProxyTarget"
+	BindService_TargetBindId_FullMethodName      = "/bind.v1.BindService/TargetBindId"
 )
 
 // BindServiceClient is the client API for BindService service.
@@ -38,6 +39,7 @@ type BindServiceClient interface {
 	DisconnectTarget(ctx context.Context, in *DisconnectTargetRequest, opts ...grpc.CallOption) (*DisconnectTargetResponse, error)
 	BindProxyTarget(ctx context.Context, in *ProxyTargetRequest, opts ...grpc.CallOption) (*ProxyTargetResponse, error)
 	UnbindProxyTarget(ctx context.Context, in *ProxyTargetRequest, opts ...grpc.CallOption) (*ProxyTargetResponse, error)
+	TargetBindId(ctx context.Context, in *TargetBindIdRequest, opts ...grpc.CallOption) (*TargetBindIdResponse, error)
 }
 
 type bindServiceClient struct {
@@ -102,6 +104,15 @@ func (c *bindServiceClient) UnbindProxyTarget(ctx context.Context, in *ProxyTarg
 	return out, nil
 }
 
+func (c *bindServiceClient) TargetBindId(ctx context.Context, in *TargetBindIdRequest, opts ...grpc.CallOption) (*TargetBindIdResponse, error) {
+	out := new(TargetBindIdResponse)
+	err := c.cc.Invoke(ctx, BindService_TargetBindId_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BindServiceServer is the server API for BindService service.
 // All implementations must embed UnimplementedBindServiceServer
 // for forward compatibility
@@ -113,6 +124,7 @@ type BindServiceServer interface {
 	DisconnectTarget(context.Context, *DisconnectTargetRequest) (*DisconnectTargetResponse, error)
 	BindProxyTarget(context.Context, *ProxyTargetRequest) (*ProxyTargetResponse, error)
 	UnbindProxyTarget(context.Context, *ProxyTargetRequest) (*ProxyTargetResponse, error)
+	TargetBindId(context.Context, *TargetBindIdRequest) (*TargetBindIdResponse, error)
 	mustEmbedUnimplementedBindServiceServer()
 }
 
@@ -137,6 +149,9 @@ func (UnimplementedBindServiceServer) BindProxyTarget(context.Context, *ProxyTar
 }
 func (UnimplementedBindServiceServer) UnbindProxyTarget(context.Context, *ProxyTargetRequest) (*ProxyTargetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnbindProxyTarget not implemented")
+}
+func (UnimplementedBindServiceServer) TargetBindId(context.Context, *TargetBindIdRequest) (*TargetBindIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TargetBindId not implemented")
 }
 func (UnimplementedBindServiceServer) mustEmbedUnimplementedBindServiceServer() {}
 
@@ -259,6 +274,24 @@ func _BindService_UnbindProxyTarget_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BindService_TargetBindId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TargetBindIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BindServiceServer).TargetBindId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BindService_TargetBindId_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BindServiceServer).TargetBindId(ctx, req.(*TargetBindIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BindService_ServiceDesc is the grpc.ServiceDesc for BindService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -289,6 +322,10 @@ var BindService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UnbindProxyTarget",
 			Handler:    _BindService_UnbindProxyTarget_Handler,
+		},
+		{
+			MethodName: "TargetBindId",
+			Handler:    _BindService_TargetBindId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
